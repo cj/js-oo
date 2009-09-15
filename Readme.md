@@ -8,6 +8,7 @@ Super lightweight Object Oriented library for JavaScript.
 Create a simple class, with no properties or methods:
 
     User = Class()
+    // or Class.extend()
     
 Create a class containing both properties and methods:
 
