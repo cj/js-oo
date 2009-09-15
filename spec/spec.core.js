@@ -50,7 +50,10 @@ describe 'Class'
     it 'should work when using the instanceof operator'
       User = Class({ type: 'user' })
       Admin = User.extend()
+      (new User).should.be_an_instance_of Class
       (new User).should.be_an_instance_of User
+      (new Admin).should.be_an_instance_of Class
+      (new Admin).should.be_an_instance_of User
       (new Admin).should.be_an_instance_of Admin
     end
 
