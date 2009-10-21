@@ -1,5 +1,11 @@
 
 describe 'Class'
+  describe '.version'
+    it 'should be a triple'
+      Class.version.should.match(/^\d+\.\d+\.\d+$/)
+    end
+  end
+
   describe '()'
     it 'should create a class'
       User = Class()
