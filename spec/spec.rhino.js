@@ -1,5 +1,5 @@
 
-load('/Library/Ruby/Gems/1.8/gems/visionmedia-jspec-2.11.1/lib/jspec.js')
+load('/Library/Ruby/Gems/1.8/gems/jspec-2.11.13/lib/jspec.js')
 load('lib/oo.js')
 
 JSpec
