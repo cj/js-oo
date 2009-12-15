@@ -31,6 +31,33 @@ describe 'Class'
       (new Foo).should.respond_to 'bar'
       (new Foo).should.respond_to 'baz'
     end
+    
+    it 'should merge additional properties'
+      Foo = Class({
+        bar: 1
+      })
+      Foo.include({
+        baz: 2
+      })
+      (new Foo).should.have_property 'bar'
+      (new Foo).should.have_property 'baz'
+    end
+    
+    it 'should support __super__()'
+      Foo = Class({
+        toString: function(){
+          return 'Foo'
+        }
+      })
+      Bar = Foo.extend()
+      Bar.include({
+        toString: function(){
+          return this.__super__() + ' Bar'
+        }
+      })
+      (new Foo).toString().should.eql 'Foo'
+      (new Bar).toString().should.eql 'Foo Bar'
+    end
   end
   
   describe '({ ... })'
