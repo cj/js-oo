@@ -20,6 +20,30 @@ describe 'Class'
     end
   end
   
+  describe '.include'
+    it 'should include an array of mixins'
+      Foo = { a: 'b' }
+      Bar = { c: 'd' }
+      Baz = Class({
+        include: [Foo, Bar],
+        d: 'e'
+      })
+      (new Baz).should.have_property 'a', 'b'
+      (new Baz).should.have_property 'c', 'd'
+      (new Baz).should.have_property 'd', 'e'
+    end
+    
+    it 'should include a single mixin'
+      Foo = { a: 'b' }
+      Bar = Class({
+        include: Foo,
+        c: 'd'
+      })
+      (new Bar).should.have_property 'a', 'b'
+      (new Bar).should.have_property 'c', 'd'
+    end
+  end
+  
   describe '.include()'
     it 'should merge additional methods'
       Foo = Class({
