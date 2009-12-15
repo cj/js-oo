@@ -55,6 +55,14 @@ Reference superclass methods using __super__:
     tj = new Admin('tj', 22)
     tj.toString()
     // => "<Admin name=\"tj\" age=22>"
+      
+Include more methods:
+
+    Admin.include({
+      says: function(){
+        return 'Im an admin!'
+      }
+    })
     
 ## License 
 
