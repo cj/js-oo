@@ -84,8 +84,51 @@
 
 // --- Benchmarks
 
-suite('Class', { times: 1000 }, function(){
-  benchmark('new class', function(){
-    User = Class()
+load('lib/oo.js')
+
+User = Class({
+  name: 'User',
+  toString: function(){
+    return '[' + this.name + ']'
+  }
+})
+
+Manager = User.extend({
+  name: 'Manager',
+  toString: function() {
+    return this.__super__()
+  }
+})
+
+suite('Class', 10000, function(){
+  benchmark('... warmup ...', function(){})
+  
+  benchmark('Constructor', function(){
+    Foo = function(){}
+  })
+  
+  benchmark('Class()', function(){
+    Foo = Class()
+  })
+  
+  benchmark('Class.extend()', function(){
+    Admin = Manager.extend()
+  })
+  
+  Foo = function(){}
+  benchmark('new Constructor', function(){
+    user = new Foo
+  })
+  
+  benchmark('new Class', function(){
+    user = new Manager
+  })
+  
+  benchmark('regular()', function(){
+    (new User).toString()
+  })
+  
+  benchmark('__super__()', function(){
+    (new Manager).toString()
   })
 })
