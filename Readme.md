@@ -66,6 +66,9 @@ Include more methods:
     
 Or include some mixins (objects):
 
+    Enumerable = { ... }
+    Comparable = { ... }
+
     Animal = Class({
       include: [Enumerable, Comparable]
     })
