@@ -64,6 +64,18 @@ Include more methods:
       }
     })
     
+Or include some mixins (objects):
+
+    Animal = Class({
+      include: [Enumerable, Comparable]
+    })
+    
+Or a single mixin:
+  
+    Animal = Class({
+      include: Enumerable
+    })
+    
 ## License 
 
 (The MIT License)
