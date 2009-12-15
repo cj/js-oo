@@ -20,6 +20,19 @@ describe 'Class'
     end
   end
   
+  describe '.include()'
+    it 'should merge additional methods'
+      Foo = Class({
+        bar: function(){}
+      })
+      Foo.include({
+        baz: function(){}
+      })
+      (new Foo).should.respond_to 'bar'
+      (new Foo).should.respond_to 'baz'
+    end
+  end
+  
   describe '({ ... })'
     it 'should populate prototype properties'
       User = Class({ type: 'user' })
