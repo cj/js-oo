@@ -79,6 +79,29 @@ Or a single mixin:
       include: Enumerable
     })
     
+Extend singleton prototype with methods:
+
+    User = Class({
+      extend: {
+        path: '/users'
+      }
+    })
+    
+    User.path
+    // => '/users'
+    
+Or using "mixins":
+
+    User = Class({
+      extend: Foo
+    })
+    
+Or using several "mixins":
+
+    User = Class({
+      extend: [Foo, Bar]
+    })
+    
 ## License 
 
 (The MIT License)
