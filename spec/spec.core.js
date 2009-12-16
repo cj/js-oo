@@ -20,6 +20,26 @@ describe 'Class'
     end
   end
   
+  describe '.extend'
+    it 'should mixin to the constructors singleton proto'
+      Foo = { a: 'b' }
+      Bar = { c: 'd' }
+      Baz = Class({
+        extend: [Foo, Bar]
+      })
+      Baz.should.have_property 'a', 'b'
+      Baz.should.have_property 'c', 'd'
+    end
+    
+    it 'should extend a single mixin'
+      Foo = { a: 'b' }
+      Bar = Class({
+        extend: Foo
+      })
+      Bar.should.have_property 'a', 'b'
+    end
+  end
+  
   describe '.include'
     it 'should include an array of mixins'
       Foo = { a: 'b' }
